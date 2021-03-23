@@ -19,6 +19,7 @@ export default class ManagerCategoriesPage extends Component {
     <Categorie
      handlechange={this.change}
      handleadd={this.add}
+     nom={this.state.nom}
     >
    
     </Categorie>
