@@ -9,12 +9,24 @@ export default function Categorie(props) {
             <div>
               <h2>Categorie</h2>
               <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                <input type="text" placeholder=" Name" className="form-control" id="exampleFormControlInput1" />
+                <input 
+                name="nom"
+                onChange={props.handlechange}
+                type="text"
+                 placeholder=" Name" 
+                 className="form-control" 
+                 id="exampleFormControlInput1" />
               </div>
               <div className="mb-4 " style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                <textarea className="form-control" id="exampleFormControlTextarea1" placeholder=" Descriptions" rows={3} defaultValue={""} />
+                <textarea 
+                name="description"
+                onChange={props.handlechange}
+                className="form-control" id="exampleFormControlTextarea1" placeholder=" Descriptions" rows={3} defaultValue={""} />
               </div>
-              <button type="submit" className="btn btn-primary mb-5">ADD</button>
+              <button type="submit" className="btn btn-primary mb-5"
+              onClick={props.handleadd}
+
+              >ADD</button>
             </div>
             <div className="input-group mb-3">
               <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
