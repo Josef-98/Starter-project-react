@@ -3,12 +3,15 @@
   
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyAXdH7V4kFXeqRxwGzPYq-WMAz-dnetM5g",
-  authDomain: "ecommerce-website-a46e5.firebaseapp.com",
-  projectId: "ecommerce-website-a46e5",
-  storageBucket: "ecommerce-website-a46e5.appspot.com",
-  messagingSenderId: "1013292514679",
-  appId: "1:1013292514679:web:43887f58151b54e4e3f572"
+    apiKey: "AIzaSyDT-q38VLMIbQp6Dk2mkiYVrn_R53rnF8E",
+    authDomain: "starterprojetecommerce.firebaseapp.com",
+    databaseURL: "https://starterprojetecommerce-default-rtdb.firebaseio.com",
+    projectId: "starterprojetecommerce",
+    storageBucket: "starterprojetecommerce.appspot.com",
+    messagingSenderId: "1055829109402",
+    appId: "1:1055829109402:web:be31ab0da1381d89e2cd23",
+    measurementId: "G-EHZ3DWVH39"
+
   };
 
   const app=firebase.initializeApp(firebaseConfig);

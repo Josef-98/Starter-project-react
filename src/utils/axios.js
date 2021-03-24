@@ -1,4 +1,4 @@
 import axios from "axios"
 export default axios.create({
-    baseURL:''
+    baseURL:'https://starterprojetecommerce-default-rtdb.firebaseio.com/'
 })
