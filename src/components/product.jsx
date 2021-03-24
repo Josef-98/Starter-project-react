@@ -1,4 +1,5 @@
 import React from 'react'
+import ProductTrait from './product-trait'
 
 export default function Product(props) {
     return (
@@ -7,32 +8,55 @@ export default function Product(props) {
                 <div className="container-fluid ">
                     <div>
                         <h2>Products</h2>
+                        <form 
+                        onSubmit={props.submitAdd}>
                         <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <input type="text" placeholder=" image" className="form-control" id="exampleFormControlInput1" />
+                            <input 
+                            onChange={props.change}
+                            name="avatar"
+                            type="text" placeholder=" image" className="form-control" id="exampleFormControlInput1" />
                         </div>
                         <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <input type="text" placeholder=" Name" className="form-control" id="exampleFormControlInput1" />
+                            <input
+                              onChange={props.change}
+                              name="title"
+                              type="text" placeholder=" Name" className="form-control" id="exampleFormControlInput1" />
                         </div>
                         <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <input type="text" placeholder=" Quqlity" className="form-control" id="exampleFormControlInput1" />
+                            <input 
+                             onChange={props.change}
+                             name="quantity"
+                             type="text" placeholder=" Quantity" className="form-control" id="exampleFormControlInput1" />
                         </div>
                         <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <input type="text" placeholder=" Price" className="form-control" id="exampleFormControlInput1" />
+                            <input 
+                             onChange={props.change}
+                             name="price"
+                             type="text" placeholder=" Price" className="form-control" id="exampleFormControlInput1" />
                         </div>
-                        <select className="form-select w-50 mb-4 p-2 " aria-label="Default select example">
+                        <select 
+                        name="categorie"
+                        onChange={props.change}
+                        className="form-select w-50 mb-4 p-2 " aria-label="Default select example">
                             <option selected> Select the categories</option>
-                            <option value={1}>One</option>
-                            <option value={2}>Two</option>
-                            <option value={3}>Three</option>
+                          {props.dataSelect.map(c=><option key ={c.id} value ={c.nom} >{c.nom}</option>)}
                         </select>
                         <div className="mb-4 " style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" placeholder=" Descriptions" rows={3} defaultValue={""} />
+                            <textarea 
+                            name="description"
+                            onChange={props.change}
+                            className="form-control" id="exampleFormControlTextarea1" placeholder=" Descriptions" rows={3} defaultValue={""} />
                         </div>
-                    </div>
+                       
+                    
                     <button type="submit" className="btn btn-primary mb-5">ADD</button>
+                    </form>
+                </div>
                 </div>
                 <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                    <input
+                     
+                      type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
                     <button className="btn btn-primary" type="button" id="button-addon2"><i className="fas fa-search" />
                     </button>
                 </div>
@@ -48,65 +72,24 @@ export default function Product(props) {
                                     <thead className style={{ color: 'rgb(0, 0, 0)' }}>
                                         <tr><th>Image</th>
                                             <th>Title</th>
-                                            <th>Categories</th>
-                                            <th>Description</th>
                                             <th>Quantity</th>
                                             <th>Price</th>
+                                            <th>Categorie</th>
+                                            <th>Description</th>
                                             <th>Settings</th>
                                         </tr></thead>
                                     <tbody>
-                                        <tr>
-                                            <td><img src="https://via.placeholder.com/100" alt /></td>
-                                            <td>1</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>
-                                                <button type="button" className="btn btn-outline-danger p-2 "><i className="fas fa-trash-alt" /></button>
-                                                <button type="button" className="btn btn-outline-warning p-2 "><i className="fas fa-edit" />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://via.placeholder.com/100" alt /></td>
-                                            <td>2</td>
-                                            <td>Minerva Hooper</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>
-                                                <button type="button" className="btn btn-outline-danger p-2 "><i className="fas fa-trash-alt" /></button>
-                                                <button type="button" className="btn btn-outline-warning p-2 "><i className="fas fa-edit" />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://via.placeholder.com/100" alt /></td>
-                                            <td>3</td>
-                                            <td>Sage Rodriguez</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>
-                                                <button type="button" className="btn btn-outline-danger p-2 "><i className="fas fa-trash-alt" /></button>
-                                                <button type="button" className="btn btn-outline-warning p-2 "><i className="fas fa-edit" />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://via.placeholder.com/100" alt /></td>
-                                            <td>4</td>
-                                            <td>Philip Chaney</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                            <td>
-                                                <button type="button" className="btn btn-outline-danger p-2 "><i className="fas fa-trash-alt" /></button>
-                                                <button type="button" className="btn btn-outline-warning p-2 "><i className="fas fa-edit" />
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        
+                                        {
+                                            props.data.map(s=> <ProductTrait
+                                              key={s.id}
+                                              datadata={s}
+                                                                                 
+                                        
+                                            />)
+                                        
+                                          }
+                                    
                                     </tbody>
                                 </table>
                             </div>

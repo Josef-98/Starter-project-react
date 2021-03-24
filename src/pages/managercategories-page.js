@@ -9,7 +9,14 @@ export default class ManagerCategoriesPage extends Component {
         this.state = {
             nom: "",
             description: "",
-            list_categorie: []
+            list_categorie: [],
+            backup:[],
+            updatedcategorie:-1,
+            editTest:false,
+            action:"ADD",
+            textBtnState:"add",
+            cancelEditState:false
+
         }
     }
 
@@ -22,6 +29,15 @@ export default class ManagerCategoriesPage extends Component {
                     submit={this.submit}
                     data={this.state.list_categorie}
                     remove={this.remove}
+                    edit={this.edit}
+                    editNom={this.state.nom}
+                    editDesc={this.state.description}
+                    action={this.state.action}
+                    submitEditCategorie ={this.submitEditCategorie }
+                    textBtnState={this.state.textBtnState}
+                    cancelEditState={this.state.cancelEditState}
+                    search={this.search}
+
 
 
 
@@ -146,10 +162,133 @@ export default class ManagerCategoriesPage extends Component {
     
             //ajouter la liste
             this.setState({ list_categorie: listcategorienew });
+            this.setState({ backup: listcategorienew });
     
             //ajouter un backup
            
           }
         });
       }
+
+      remove = (idCategorie) => {
+        let choice = window.confirm("Are you sure?");
+    
+        if (choice == true) {
+          //supprimer un etudiant depuis firebase
+          // alert(idStudent)
+          // alert ("delete student")
+          axios.delete("categories/" + idCategorie + ".json").then(() => {
+            let newList = this.state.list_categorie;
+            newList = newList.filter(
+              (s) => s.id !== idCategorie);
+    
+            this.setState({ list_categorie: newList })
+            //changer le backup aussi
+            this.setState({ backup: newList })
+           
+    
+          });
+        }
+    
+      }
+
+      edit= (uCategorie) => {
+        
+            //changer le text button newStudent
+    this.setState({ textBtnState: "Edit " })
+
+    
+    
+
+    //ajouter les informations au state
+    this.setState({
+      nom: uCategorie.nom,
+      description: uCategorie.description,
+      
+    })
+
+    //changer l'action du state
+    this.setState({ action: "edit" });
+    //afficher cancel edit btn
+    //this.setState({cancelEditState:true})
+   
+
+    
+
+
+        
+      }
+
+submitEditCategorie = (event) => {
+    this.setState({ textBtnState: "add" })
+
+    // alert(1)
+
+    //ne pas acctualiser la page
+    event.preventDefault();
+
+    //partie data a envoyer a firebase
+    const categorie_data = {
+      nom: this.state.nom,
+      description: this.state.description
+     
+    }
+
+    //appel a la fonction put de axios
+    axios
+      .put("categories/" + this.state.updatedcategorie + ".json", categorie_data)
+      .then((response) => {
+
+        //changer l'etudiant dans la liste
+        let newList = this.state.list_categorie;
+        newList.forEach((s) => {
+          if (s.id == this.state.updatedcategorie) {
+            s.nom = response.data.nom;
+            s.description = response.data.description;
+          
+          }
+        });
+        //modifier la liste du state
+        this.setState({ list_categorie: newList })
+        //modifier la liste backup aussi
+        this.setState({ backup: newList });
+
+        //vider le formulaire
+        event.target.reset();
+
+        //vider les variables state
+        this.setState({
+          nom: "",
+          description: "",
+         
+
+
+
+        })
+      });
+    }
+
+    search = (event) => {
+        //concerver notre liste
+        // this.setState({backupList:this.state.list_student_data})
+
+        let query = event.target.value.toLowerCase();
+
+        //changer la liste
+        if (query == "") {
+            this.setState({ list_categorie: this.state.backup })
+        } else {
+            let newList = this.state.list_categorie.filter(s =>
+                s.nom.toLowerCase().includes(query) ||
+                s.description.toLowerCase().includes(query)
+            );
+
+
+            this.setState({ list_categorie: newList })
+        }
+
+        //console.log(event.target.value)
+
+    }
+   
 }
