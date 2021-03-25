@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "../assets/dash.css"
 
-export default function Globaldesign(props) {
+export default function AdminTheme(props) {
     return (
 
         <div>

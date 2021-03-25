@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Globaldesign from '../components/globaldesign'
-import ModelClient from '../models/model-client'
-import axios from '../utils/axios'
+import AdminTheme from '../../theme/admin'
+import ModelClient from '../../models/model-client'
+import axios from '../../utils/axios'
 
 export default class ManageClientPage extends Component {
     constructor(){
@@ -46,7 +46,7 @@ export default class ManageClientPage extends Component {
 
     render() {
         return (
-            <Globaldesign>
+            <AdminTheme>
                  <div>
             <div>
              
@@ -166,7 +166,7 @@ export default class ManageClientPage extends Component {
             </div>
         </div>
 
-        </Globaldesign>
+        </AdminTheme>
         )
     }
 

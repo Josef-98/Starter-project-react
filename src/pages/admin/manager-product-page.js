@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Globaldesign from '../components/globaldesign'
-import Product from '../components/product'
-import ProductModel from '../models/product-model'
-import axios from '../utils/axios'
-import CategorieModel from '../models/categorie-model'
+import AdminTheme from '../../theme/admin'
+import Product from '../../components/product/product'
+import ProductModel from '../../models/product-model'
+import axios from '../../utils/axios'
+import CategorieModel from '../../models/categorie-model'
 
 export default class ManagerProductPage extends Component {
     constructor(){
@@ -83,7 +83,7 @@ export default class ManagerProductPage extends Component {
     render() {
         return (
             <div>
-                <Globaldesign>
+                <AdminTheme>
                     <Product
                     change={this.change}
                     submitADD={this.submitADD}
@@ -105,7 +105,7 @@ export default class ManagerProductPage extends Component {
                     >
                         
                     </Product>
-                </Globaldesign>
+                </AdminTheme>
             </div>
         )
     }

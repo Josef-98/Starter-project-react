@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import Globaldesign from '../components/globaldesign'
-import Categorie from '../components/categorie'
-import CategorieModel from '../models/categorie-model'
-import axios from '../utils/axios'
-import ManagerClient from '../pages/manage-client'
+import Categorie from '../../components/categories/categorie'
+import CategorieModel from '../../models/categorie-model'
+import axios from '../../utils/axios'
+import AdminTheme from '../../theme/admin'
 export default class ManagerCategoriesPage extends Component {
   constructor() {
     super()
@@ -19,9 +18,37 @@ export default class ManagerCategoriesPage extends Component {
     }
   }
 
+  componentDidMount() {
+    axios.get("categories.json").then((response) => {
+      if (response.data != null) {
+        //extraire toutes les clé de l'objet data
+        let keys = Object.keys(response.data);
+
+        //parcourir les keys
+        let listcategorienew = keys.map((k) => {
+          let ns = new CategorieModel(
+            k,
+            response.data[k].nom,
+            response.data[k].description,
+
+          );
+
+          return ns;
+        });
+
+        //ajouter la liste
+        this.setState({ list_categorie: listcategorienew });
+        this.setState({ backup: listcategorienew });
+
+        //ajouter un backup
+
+      }
+    });
+  }
+
   render() {
     return (
-      <Globaldesign>
+      <AdminTheme>
 
         <Categorie
           change={this.change}
@@ -41,7 +68,7 @@ export default class ManagerCategoriesPage extends Component {
 
 
         ></Categorie>
-      </Globaldesign>
+      </AdminTheme>
 
     )
   }
@@ -141,33 +168,7 @@ export default class ManagerCategoriesPage extends Component {
 
   }
 
-  componentDidMount() {
-    axios.get("categories.json").then((response) => {
-      if (response.data != null) {
-        //extraire toutes les clé de l'objet data
-        let keys = Object.keys(response.data);
-
-        //parcourir les keys
-        let listcategorienew = keys.map((k) => {
-          let ns = new CategorieModel(
-            k,
-            response.data[k].nom,
-            response.data[k].description,
-
-          );
-
-          return ns;
-        });
-
-        //ajouter la liste
-        this.setState({ list_categorie: listcategorienew });
-        this.setState({ backup: listcategorienew });
-
-        //ajouter un backup
-
-      }
-    });
-  }
+ 
 
   remove = (idCategorie) => {
     let choice = window.confirm("Are you sure?");

@@ -1,6 +1,5 @@
 import React from 'react'
 import "../assets/dash.css"
-import Globaldesign from './globaldesign'
 
 export default function Dash() {
     return (
