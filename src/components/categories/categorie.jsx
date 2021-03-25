@@ -46,7 +46,7 @@ export default function Categorie(props) {
               <div className="col-lg-12 col-md-12">
                 <div className="card">
                   <div className="card-header card-header-primary">
-                    <h4 className="card-title">Orders Status</h4>
+                    <h4 className="card-title">Categories </h4>
                     <p className="card-category" />
                   </div>
                   <div className="card-body table-responsive">
