@@ -15,8 +15,11 @@ export default class ManagerProductPage extends Component {
             price:"",
             categorie:"",
             description:"",
+            updatedproduct:-1,
             list_product:[],
-            list_categorie:[]
+            list_categorie:[],
+            textBtnState:"ADD",
+            action:"ADD"
         }
     }
     
@@ -83,9 +86,22 @@ export default class ManagerProductPage extends Component {
                 <Globaldesign>
                     <Product
                     change={this.change}
-                    submitAdd={this.submitADD}
+                    submitADD={this.submitADD}
                     data={this.state.list_product}
                     dataSelect={this.state.list_categorie}
+                    remove={this.remove}
+                    search={this.search}
+                    edit={this.edit}
+                    textBtnState={this.state.textBtnState}
+                    action={this.state.action}
+                    submitEditProduct={this.submitEditProduct}
+                    avatar={this.state.avatar}
+                    title={this.state.title}
+                    quantity={this.state.quantity}
+                    price={this.state.price}
+                    categorie={this.state.categorie}
+                    description={this.state.description}
+
                     >
                         
                     </Product>
@@ -175,6 +191,144 @@ console.log(name,value)
 
         }
     }
+    remove = (idProduct) => {
+      let choice = window.confirm("Are you sure?");
+  
+      if (choice == true) {
+       
+        axios.delete("products/" + idProduct + ".json").then(() => {
+          let newList = this.state.list_product;
+          newList = newList.filter(
+            (s) => s.id !== idProduct);
+  
+          this.setState({ list_product: newList })
+          //changer le backup aussi
+          this.setState({ backup: newList })
+         
+  
+        });
+      }
+  
+    }
+
+    search = (event) => {
+      //concerver notre liste
+      // this.setState({backupList:this.state.list_student_data})
+  
+      let query = event.target.value.toLowerCase();
+  
+      //changer la liste
+      if (query == "") {
+        this.setState({ list_product: this.state.backup })
+      } else {
+        let newList = this.state.list_product.filter(s =>
+          s.title.toLowerCase().includes(query) ||
+          s.categorie.toLowerCase().includes(query)
+        );
+  
+  
+        this.setState({ list_product: newList })
+      }
+  
+      //console.log(event.target.value)
+  
+    }
+
+
+
+    edit = (uProduct) => {
+
+      //changer le text button newStudent
+      this.setState({ textBtnState: "Edit " })
+  
+  
+  
+  
+      //ajouter les informations au state
+      this.setState({
+        avatar: uProduct.avatar,
+        title: uProduct.title,
+        quantity: uProduct.quantity,
+        price: uProduct.price,
+        categorie: uProduct.categorie,
+        description: uProduct.description,
+  
+      })
+  
+      //changer l'action du state
+      this.setState({ action: "edit" });
+      //afficher cancel edit btn
+      //this.setState({cancelEditState:true})
+  
+  
+  
+  
+  
+  
+    }
+  
+    submitEditProduct = (event) => {
+      this.setState({ textBtnState: "add" })
+  
+      // alert(1)
+  
+      //ne pas acctualiser la page
+      event.preventDefault();
+  
+      //partie data a envoyer a firebase
+      const product_data = {
+        avatar: this.state.avatar,
+        title: this.state.title,
+        quantity: this.state.quantity,
+        price: this.state.price,
+        categorie: this.state.categorie,
+        description: this.state.description
+  
+  
+      }
+  
+      //appel a la fonction put de axios
+      axios
+        .put("products/" + this.state.updatedproduct + ".json", product_data)
+        .then((response) => {
+  
+          //changer l'etudiant dans la liste
+          let newList = this.state.list_product;
+          newList.forEach((s) => {
+            if (s.id == this.state.updatedproduct) {
+              s.avatar = response.data.avatar;
+              s.title = response.data.title;
+              s.quantity = response.data.quantity;
+              s.price = response.data.price;
+              s.categorie = response.data.categorie;
+              s.description = response.data.description;
+  
+            }
+          });
+          //modifier la liste du state
+          this.setState({ list_product: newList })
+          //modifier la liste backup aussi
+          this.setState({ backup: newList });
+  
+          //vider le formulaire
+          event.target.reset();
+  
+          //vider les variables state
+          this.setState({
+            avatar: "",
+            title: "",
+            quantity: "",
+            price: "",
+            categorie: "",
+            description: "",
+  
+  
+  
+  
+          })
+        });
+    }
+  
 }
 
 

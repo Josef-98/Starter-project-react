@@ -8,56 +8,68 @@ export default function Product(props) {
                 <div className="container-fluid ">
                     <div>
                         <h2>Products</h2>
-                        <form 
-                        onSubmit={props.submitAdd}>
-                        <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <input 
-                            onChange={props.change}
-                            name="avatar"
-                            type="text" placeholder=" image" className="form-control" id="exampleFormControlInput1" />
-                        </div>
-                        <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <input
-                              onChange={props.change}
-                              name="title"
-                              type="text" placeholder=" Name" className="form-control" id="exampleFormControlInput1" />
-                        </div>
-                        <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <input 
-                             onChange={props.change}
-                             name="quantity"
-                             type="text" placeholder=" Quantity" className="form-control" id="exampleFormControlInput1" />
-                        </div>
-                        <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <input 
-                             onChange={props.change}
-                             name="price"
-                             type="text" placeholder=" Price" className="form-control" id="exampleFormControlInput1" />
-                        </div>
-                        <select 
-                        name="categorie"
-                        onChange={props.change}
-                        className="form-select w-50 mb-4 p-2 " aria-label="Default select example">
-                            <option selected> Select the categories</option>
-                          {props.dataSelect.map(c=><option key ={c.id} value ={c.nom} >{c.nom}</option>)}
-                        </select>
-                        <div className="mb-4 " style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
-                            <textarea 
-                            name="description"
-                            onChange={props.change}
-                            className="form-control" id="exampleFormControlTextarea1" placeholder=" Descriptions" rows={3} defaultValue={""} />
-                        </div>
-                       
-                    
-                    <button type="submit" className="btn btn-primary mb-5">ADD</button>
-                    </form>
-                </div>
+                        <form
+                            onSubmit={props.action=="ADD" ? props.submitADD : props.submitEditProduct}>
+                            <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
+                                <input
+                                    value={props.avatar}
+                                    onChange={props.change}
+                                    name="avatar"
+                                    type="text" placeholder=" image" className="form-control" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
+                                <input
+                                value={props.title}
+                                    onChange={props.change}
+                                    name="title"
+                                    type="text" placeholder=" Name" className="form-control" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
+                                <input
+                                value={props.quantity}
+                                    onChange={props.change}
+                                    name="quantity"
+                                    type="number" min="1" placeholder=" Quantity" className="form-control" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="mb-4 w-50" style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
+                                <input
+                                value={props.price}
+                                    onChange={props.change}
+                                    name="price"
+                                    type="number" min="0" placeholder=" Price" className="form-control" id="exampleFormControlInput1" />
+                            </div>
+                            <select
+                            value={props.categorie}
+                                name="categorie"
+                                onChange={props.change}
+                                className="form-select w-50 mb-4 p-2 " aria-label="Default select example">
+                                <option selected> Select the categories</option>
+                                {props.dataSelect.map(c => <option key={c.id} value={c.nom} >{c.nom}</option>)}
+                            </select>
+                            <div className="mb-4 " style={{ border: 'solid 0.5px black', backgroundColor: 'white' }}>
+                                <textarea
+                                value={props.description}
+                                    name="description"
+                                    onChange={props.change}
+                                    className="form-control" id="exampleFormControlTextarea1" placeholder=" Descriptions" rows={3} defaultValue={""} />
+                            </div>
+
+
+                            <button
+                            
+                             type="submit" className="btn btn-primary mb-5">{props.textBtnState}</button>
+                        </form>
+                    </div>
                 </div>
                 <div className="input-group mb-3">
                     <input
-                     
-                      type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                    <button className="btn btn-primary" type="button" id="button-addon2"><i className="fas fa-search" />
+                     onKeyUp={props.search}
+
+                        type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                    <button 
+                   
+                    className="btn btn-primary"
+                     type="button" id="button-addon2"><i className="fas fa-search" />
                     </button>
                 </div>
                 <div className="row">
@@ -79,17 +91,19 @@ export default function Product(props) {
                                             <th>Settings</th>
                                         </tr></thead>
                                     <tbody>
-                                        
+
                                         {
-                                            props.data.map(s=> <ProductTrait
-                                              key={s.id}
-                                              datadata={s}
-                                                                                 
-                                        
+                                            props.data.map(s => <ProductTrait
+                                                key={s.id}
+                                                datadata={s}
+                                                remove={props.remove}
+                                                edit={props.edit}
+
+
                                             />)
-                                        
-                                          }
-                                    
+
+                                        }
+
                                     </tbody>
                                 </table>
                             </div>
