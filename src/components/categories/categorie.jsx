@@ -49,7 +49,7 @@ export default function Categorie(props) {
                     <h4 className="card-title">Categories </h4>
                     <p className="card-category" />
                   </div>
-                  <div className="card-body table-responsive">
+                  <div className="card-body table-responsive">git
                     <table className="table table-hover">
                       <thead className style={{ color: 'rgb(0, 0, 0)' }}>
                         <tr>
