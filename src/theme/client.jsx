@@ -6,12 +6,11 @@ import logo from '../assets/themefront/logo.png'
 import logofooter from '../assets/themefront/logo-footer.png'
 import ma from '../assets/themefront/900px-Flag_of_Morocco.svg.png'
 import MainBanner2 from "../assets/themefront/Main-Banner2.jpg"
-import MainBanner3 from "../assets/themefront/Light Purple and White Fashion Back to Business Landscape Banner.jpg"
 
 
 
 
-export default function Client() {
+export default function Client(props) {
     return (
 
            <div >
@@ -168,6 +167,7 @@ export default function Client() {
               </div>
               {/* hahowa */}
               <div id="content" className="col-sm-9">
+                {props.children}
               </div>
             </div>
           </div>
