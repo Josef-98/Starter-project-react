@@ -6356,7 +6356,7 @@ header {
 }
 /* logo */
 #logo {
-	margin: 0;
+	float: right;
 }
 .shipping-img, .returns-img {
 	height: 40px;

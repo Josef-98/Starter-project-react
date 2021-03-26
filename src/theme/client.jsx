@@ -5,6 +5,9 @@ import product from "../assets/themefront/subbanner1.jpg"
 import logo from '../assets/themefront/logo.png'
 import logofooter from '../assets/themefront/logo-footer.png'
 import ma from '../assets/themefront/900px-Flag_of_Morocco.svg.png'
+import MainBanner2 from "../assets/themefront/Main-Banner2.jpg"
+import MainBanner3 from "../assets/themefront/Light Purple and White Fashion Back to Business Landscape Banner.jpg"
+
 
 
 
@@ -30,17 +33,6 @@ export default function Client() {
                       
                     </div>
                     <div className="top-right pull-right">
-                      <div id="top-links" className="nav pull-right">
-                        <ul className="list-inline">
-                          <li className="dropdown"><a href="#" my account className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" /> <span>My Account</span>
-                              <span className="caret" /></a>
-                            <ul className="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Register</a></li>
-                              <li><a href>Login</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -49,12 +41,6 @@ export default function Client() {
             <div className="container">
               <div className="header-inner">
                 <div className="col-sm-4 col-xs-6 header-left">
-                  <div className="shipping">
-                    <div className="shipping-img" />
-                    <i className="fas fa-truck" style={{fontSize: 50}} />
-                    <div className="shipping-text"> Free Shipping <span className="shipping-detail">Free on all
-                        products</span></div>
-                  </div>
                 </div>
                 <div className="col-sm-4 col-xs-6 header-middle">
                   <div className="header-middle-top">
@@ -130,32 +116,34 @@ export default function Client() {
             </div>
           </nav>
           <div className="container">  
-            <div className="row">
-              <div className="col-md-12">
-                <div id="main-banner" className="owl-carousel home-slider owl-theme" style={{opacity: 1, display: 'block'}}>
-                  <div className="owl-wrapper-outer">
-                    <div className="owl-wrapper" style={{width: 5640, left: 0, display: 'block', transition: 'all 0ms ease 0s', transform: 'translate3d(0px, 0px, 0px)', transformOrigin: '470px center', perspectiveOrigin: '470px center'}}>
-                      <div className="owl-item" style={{width: 940}}>
-                        <div className="item"> <a href="/#"><img src={MainBanner1} alt="main-banner1" className="img-responsive" /></a> </div>
-                      </div>
-                      <div className="owl-item" style={{width: 940}}>
-                        <div className="item"> <a href="/#"><img src={MainBanner1} alt="main-banner2" className="img-responsive" /></a> </div>
-                      </div>
-                      <div className="owl-item" style={{width: 940}}>
-                        <div className="item"> <a href="/#"><img src={MainBanner1} alt="main-banner3" className="img-responsive" /></a> </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="owl-controls clickable">
-                    <div className="owl-pagination">
-                      <div className="owl-page active"><span className /></div>
-                      <div className="owl-page"><span className /></div>
-                      <div className="owl-page"><span className /></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+         
+  <div id="carouselExampleControls" className="carousel slide" data-ride="carousel" data-interval="3000">
+  <div className="carousel-inner">
+    <div className="carousel-item active">
+      <img className="d-block w-100" src={MainBanner1} alt="First slide" />
+    </div>
+    <div className="carousel-item">
+      <img className="d-block w-100" src={MainBanner2} alt="Second slide" />
+    </div>
+  </div>
+  <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true" />
+    <span className="sr-only">Previous</span>
+  </a>
+  <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true" />
+    <span className="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
+
+
+
+
+
             <div className="row">
               <div className="cms_banner">
                 <div className="col-md-4 cms-banner-left"> <a href="/#"><img alt="#" src={product} /></a> </div>
