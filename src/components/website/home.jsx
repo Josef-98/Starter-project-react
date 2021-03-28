@@ -29,9 +29,13 @@ export default function Home(props) {
                                                         <div className="image product-imageblock"> <a href="/product"><img src={p.avatar} alt="iPod Classic" title="iPod Classic" className="img-responsive" /> </a>
                                                             <div className="button-group">
                                                                 <button type="button" className="wishlist" data-toggle="tooltip" title data-original-title="Add to Wish List"><i className="fa fa-heart-o" /></button>
-                                                                <button type="button" className="addtocart-btn">Add to
+                                                                <button 
+                                                                onClick={() => props.addToCart(p)}
+                                                                type="button" className="addtocart-btn">Add to
                         Cart</button>
-                                                                <button type="button" className="compare" data-toggle="tooltip" title data-original-title="Compare this Product"><i className="fa fa-exchange" /></button>
+                                                                <button 
+                                                                
+                                                                type="button" className="compare" data-toggle="tooltip" title data-original-title="Compare this Product"><i className="fa fa-exchange" /></button>
                                                             </div>
                                                         </div>
                                                         <div className="caption product-detail">
@@ -43,7 +47,10 @@ export default function Home(props) {
                                                         </div>
                                                         <div className="button-group">
                                                             <button type="button" className="wishlist" data-toggle="tooltip" title data-original-title="Add to Wish List"><i className="fa fa-heart-o" /></button>
-                                                            <button type="button" className="addtocart-btn">Add to Cart</button>
+                                                            <button 
+                                                           
+                                                            
+                                                            type="button" className="addtocart-btn">Add to Cart</button>
                                                             <button type="button" className="compare" data-toggle="tooltip" title data-original-title="Compare this Product"><i className="fa fa-exchange" /></button>
                                                         </div>
                                                     </div>

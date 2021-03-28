@@ -14,11 +14,15 @@ import ManagerProductPage from "../pages/admin/manager-product-page";
 import OrderPage from "../pages/admin/order-page";
 import ManageClientPage from "../pages/admin/manage-client-page";
 import RegisterPage from "../pages/admin/register-page";
+import { ShoppingCartProvider } from "../shared/auth/shoppingCart-context";
+import ShopePage from "../pages/website/shope";
+import CartPage from "../pages/website/cart";
 export default function RouterApp() {
   return (
     
     <Router>
 <AuthProvider>
+<ShoppingCartProvider>
         <Switch>
         <Route exact path="/" component={HomePage}/>
             <Route path="/register" component={RegisterPage}/>
@@ -28,8 +32,11 @@ export default function RouterApp() {
             <Route path="/productes" component={ManagerProductPage} />
             <Route path="/orders" component={OrderPage} />
             <Route path="/customers" component={ManageClientPage} />
+            <Route  path="/shope" component={ShopePage} />
+          <Route  path="/cart" component={CartPage} />
             <Route path="*" component={Error404Page} />
         </Switch>
+        </ShoppingCartProvider>
         </AuthProvider>
     </Router>
     

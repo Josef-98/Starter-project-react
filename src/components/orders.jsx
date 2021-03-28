@@ -22,10 +22,15 @@ export default function Orders(props) {
                                             <th>Contact information</th>
                                         </tr></thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Mr Soktani</td>
-                                            <td>1</td>
-                                            <td>Dakota Rice</td>
+                                       
+                                       
+                                    {props.list_orders.map((o)=>
+                                    
+                                    
+                                    <tr>
+                                            <td>{o.fullname}</td>
+                                            <td>{o.quantity}</td>
+                                            <td>{o.price}</td>
                                             <td>
                                                 <select classname="form-select w-50 mb-4 p-2 " aria-label="Default select example">
                                                     <option selected> Select Status</option>
@@ -34,70 +39,15 @@ export default function Orders(props) {
                                                     <option value="{3}">Three</option>
                                                 </select>
                                             </td>
-                                            <td>Dakota Rice</td>
-                                            <td>fef
-                  </td>
+                                            <td>{o.title}</td>
+                                            <td>{o.description}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Mr Soktani</td>
-                                            <td>2</td>
-                                            <td>Minerva Hooper</td>
-                                            <td>
-                                                <select classname="form-select w-50 mb-4 p-2 " aria-label="Default select example">
-                                                    <option selected> Select Status</option>
-                                                    <option value="{1}">One</option>
-                                                    <option value="{2}">Two</option>
-                                                    <option value="{3}">Three</option>
-                                                </select>
-                                            </td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mr Soktani</td>
-                                            <td>3</td>
-                                            <td>Sage Rodriguez</td>
-                                            <td>
-                                                <select classname="form-select w-50 mb-4 p-2 " aria-label="Default select example">
-                                                    <option selected> Select Status</option>
-                                                    <option value="{1}">One</option>
-                                                    <option value="{2}">Two</option>
-                                                    <option value="{3}">Three</option>
-                                                </select>
-                                            </td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mr Soktani</td>
-                                            <td>4</td>
-                                            <td>Philip Chaney</td>
-                                            <td>
-                                                <select classname="form-select w-50 mb-4 p-2 " aria-label="Default select example">
-                                                    <option selected> Select Status</option>
-                                                    <option value="{1}">One</option>
-                                                    <option value="{2}">Two</option>
-                                                    <option value="{3}">Three</option>
-                                                </select>
-                                            </td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mr Soktani</td>
-                                            <td>5</td>
-                                            <td>Minerva Hooper</td>
-                                            <td>
-                                                <select classname="form-select w-50 mb-4 p-2 " aria-label="Default select example">
-                                                    <option selected> Select Status</option>
-                                                    <option value="{1}">One</option>
-                                                    <option value="{2}">Two</option>
-                                                    <option value="{3}">Three</option>
-                                                </select>
-                                            </td>
-                                            <td>Dakota Rice</td>
-                                            <td>Dakota Rice</td>
-                                        </tr>
+                                    
+                                    
+                                    
+                                    )}  
+                                      
+                                        
                                     </tbody>
                                 </table>
                             </div>

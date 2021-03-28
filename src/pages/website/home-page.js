@@ -3,6 +3,7 @@ import Home from '../../components/website/home'
 import ProductModel from '../../models/product-model'
 import Client from '../../theme/client'
 import axios from '../../utils/axios'
+import ShoppingCartContext from "../../shared/auth/shoppingCart-context"
 
 export default class HomePage extends Component {
     constructor() {
@@ -50,10 +51,17 @@ export default class HomePage extends Component {
         return (
             <div>
                 <Client>
-                    <Home list_product={this.state.list_product}>
+                    <Home list_product={this.state.list_product}
+                    addToCart={this.addToCart}
+                    >
                     </Home>
                 </Client>
             </div>
         )
     }
+    addToCart = (seletedProduct) => {
+      this.context.addToCart(seletedProduct);
+    };
 }
+
+HomePage.contextType = ShoppingCartContext;
